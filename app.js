@@ -22,9 +22,6 @@ win =(usrChoice, cpChoice)=>{
     const cpSup = "cpu".fontsize(3).sup()
     result_div.innerHTML = `YOU WIN! ${usrChoice}${usrSup} beats ${cpChoice}${cpSup}`
     result_div.style.background = '#e6fff2';
-    if (userScore === 1){
-        
-    }
 }
 
 lose =(usrChoice, cpChoice)=>{
@@ -35,7 +32,6 @@ lose =(usrChoice, cpChoice)=>{
     const cpSup = "cpu".fontsize(3).sup()
     result_div.innerHTML = `YOU LOSE! ${cpChoice}${cpSup} beats ${usrChoice}${usrSup} `
     result_div.style.background = '#ffcccc';
-    return cpuScore
     
 }
 
@@ -72,16 +68,12 @@ game = (userChoice) => {
             break  
      }
 }
-gameOver = () => {
-
-}
 
 main = () => {
     
     rock_div.addEventListener('click', () => game("rock"))
     paper_div.addEventListener('click', () => game("paper"))
     scissors_div.addEventListener('click', () => game("scissors"))
-    console.log(cpuScore)
 
 }
 main();
