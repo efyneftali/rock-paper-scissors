@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Efy Neftali</title>
+    <title>Rock Paper Scissors</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="style.css">
-    
+	<script src="app.js" defer></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@800&family=Cormorant:wght@500&display=swap" rel="stylesheet">
 </head>
-
+	
 <body>
-    <script src="app.js"></script>
+	<header>
+		<h1>Rock Paper Scissors</h1>
+	</header>
+
+	<div class="score-board">
+		<div id="user-label">
+			<p>User</p> 
+			<span id="user-score">0</span>
+		</div>
+		<div id="cpu-label">
+			<p>CPU</p>
+			<span id="cpu-score">0</span>
+		</div>
+	</div>	
+
+	<div class="results">
+		<p>Lets play!</p>
+	</div>
+
+	<p id="call-to-action">Make your move.</p>
+
+	<div class="choices">
+		<div class="choice" id="rock">
+			<img src="Assets/rock.svg" alt="Hand by Jamie Yeo from the Noun Project">
+		</div>
+		<div class="choice" id="paper">
+			<img src="Assets/paper.svg" alt="five by Jamie Yeo from the Noun Projec">
+		</div>
+		<div class="choice" id="scissors">
+			<img src="Assets/scissors.svg" alt="two by Jamie Yeo from the Noun Project">
+		</div>
+	</div>
+
+
 </body>
 </html>

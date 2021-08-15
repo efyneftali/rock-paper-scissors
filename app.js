@@ -1,76 +1,87 @@
+// cache the DOM
+let userScore = 0
+let cpuScore = 0
+const userScore_span = document.getElementById("user-score")
+const cpuScore_span = document.getElementById("cpu-score")
+const scoreBoard_div = document.querySelector(".score_board")
+const result_div = document.querySelector(".results")
+const rock_div = document.getElementById("rock")
+const paper_div = document.getElementById("paper")
+const scissors_div = document.getElementById("scissors")
 
-function computerPlay (){
-    //creates a number between 1 and 3
-    let  randomNum = Math.floor(Math.random()*3)+1;
+//get users choice with event listener
+getCpuChoice = () => {
+    const choices = ['rock','paper','scissors']
+    return choices[Math.floor(Math.random()*choices.length)]  
+}
+win =(usrChoice, cpChoice)=>{
+    userScore ++
+    userScore_span.innerHTML = userScore
+    cpuScore_span.innerHTML = cpuScore 
+    const usrSup = "user".fontsize(3).sup()
+    const cpSup = "cpu".fontsize(3).sup()
+    result_div.innerHTML = `YOU WIN! ${usrChoice}${usrSup} beats ${cpChoice}${cpSup}`
+    result_div.style.background = '#e6fff2';
+    if (userScore === 1){
+        
+    }
+}
+
+lose =(usrChoice, cpChoice)=>{
+    cpuScore ++
+    userScore_span.innerHTML = userScore
+    cpuScore_span.innerHTML = cpuScore 
+    const usrSup = "user".fontsize(3).sup()
+    const cpSup = "cpu".fontsize(3).sup()
+    result_div.innerHTML = `YOU LOSE! ${cpChoice}${cpSup} beats ${usrChoice}${usrSup} `
+    result_div.style.background = '#ffcccc';
+    return cpuScore
     
-    if (randomNum === 1){
-        return "paper";
-    }else if (randomNum === 2){
-        return "rock";
-    }else{
-        return "scissors";
-    }
 }
 
+draw =(usrChoice, cpChoice)=>{
+    userScore_span.innerHTML = userScore
+    cpuScore_span.innerHTML = cpuScore 
+    const usrSup = "user".fontsize(3).sup()
+    const cpSup = "cpu".fontsize(3).sup()
+    result_div.innerHTML = `It's a draw! ${usrChoice}${usrSup} == ${cpChoice}${cpSup}`
+    result_div.style.background = '#ffffe6';
+}
 
-function playRound(playerSelection, computerSelection) {
-
-    let playerDraw = playerSelection.toLowerCase();
-    if (playerDraw === "rock"){
-        if (computerSelection === "paper"){
-            return "You Lose!"
-        }else if(computerSelection === "rock"){
-            return "Its a Tie!"
-        }else{
-            return "You Win"
-        }
-    }if (playerDraw === "paper"){
-        if (computerSelection === "rock"){
-            return "You Win"
-        }else if(computerSelection === "paper"){
-            return "Its a Tie!"
-        }else{
-            return "You Lose!"
-        }
-    }if (playerDraw === "scissors"){
-        if(computerSelection === "rock"){
-            return "You Lose!"
-        }else if(computerSelection === "paper"){
-            return "You Win"
-        }else{
-            return "Its a Tie!"
-        }
-    }
+game = (userChoice) => {
+     const cpuChoice = getCpuChoice()
+    
+     switch (userChoice+cpuChoice){
+        //  win cases
+        case "rockscissors":
+        case "paperrock":
+        case "scissorspaper":
+            win(userChoice, cpuChoice)
+            break;
+        // lose cases
+        case "scissorsrock":
+        case "rockpaper":
+        case "paperscissors":
+            lose(userChoice, cpuChoice)
+            break
+        //draw cases
+        case "rockrock":
+        case "paperpaper":
+        case "scissorsscissors":
+            draw(userChoice, cpuChoice)
+            break  
+     }
+}
+gameOver = () => {
 
 }
 
-function game(){
-    let playerScore = 0;
-    let compScore = 0;
-    let numTrys = 1;
-    do {
-        let playerSelection = prompt("Rock, Paper, Scissors?");
-        let computerSelection = computerPlay();
-        let result = playRound(playerSelection, computerSelection);
-        console.log(result)
-        if (result === "You Win!"){
-            playerScore ++;
-        }else if (result==="You Lose!"){
-            compScore ++;
-        }
-        else{
-            numTrys --;
-        }
-
-        numTrys ++;
-        console.log(numTrys);
-    }while (numTrys <= 5);
-
-    if (playerScore > compScore){
-        console.log("YOU WON THE WHOLE GAME!");
-    }else{
-        console.log("BETTER LUCK NEXT TIME!");
-    }
+main = () => {
+    
+    rock_div.addEventListener('click', () => game("rock"))
+    paper_div.addEventListener('click', () => game("paper"))
+    scissors_div.addEventListener('click', () => game("scissors"))
+    console.log(cpuScore)
 
 }
-console.log(game())
+main();

@@ -1,1 +1,1 @@
-This is my solution  for the rock paper scissors project. It took  me about 2 hrs to write up the solution. I how to use nested functions, counters, do/while loops, and conditional statements. 
+Add UI. JS script was refactored. I became familar with different ways  you can manipulate the DOM and finally got to see  how HTML,CSS, and JS come together. Main takeaways: cache DOM, linking Js script with the defer tag, adding  functionaly to the static HTML using event listeners. 
